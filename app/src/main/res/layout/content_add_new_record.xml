@@ -38,7 +38,7 @@
             tools:layout_editor_absoluteY="16dp" />
 
         <EditText
-            android:id="@+id/mtxtNewText"
+            android:id="@+id/mtxtNoteContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/btnDiscard"
@@ -60,6 +60,16 @@
             android:text="Discard"
             tools:layout_editor_absoluteX="34dp"
             tools:layout_editor_absoluteY="447dp" />
+
+        <EditText
+            android:id="@+id/txtNoteName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/mtxtNoteContent"
+            android:layout_alignTop="@+id/btnAttachment"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
