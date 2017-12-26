@@ -16,11 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AddNewRecord"
-            android:label="@string/title_activity_add_new_record"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddNewNote"></activity>
+        <activity android:name=".ViewNotes" />
+        <activity android:name=".InsertNewNote"></activity>
     </application>
 
 </manifest>

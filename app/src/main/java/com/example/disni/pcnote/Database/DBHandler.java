@@ -47,7 +47,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
         String[] projection = {
                 MasterFile.Notes._ID,
-                MasterFile.Notes.COLUMN_NAME_NOTENAME
+                MasterFile.Notes.COLUMN_NAME_NOTENAME,
+                MasterFile.Notes.COLUMN_NAME_NOTECONTENT
         };
 
         String selection = MasterFile.Notes.COLUMN_NAME_NOTENAME + " = ?";

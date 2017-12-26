@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddNewNote.class);
+                Intent intent = new Intent(MainActivity.this, InsertNewNote.class);
                 startActivity(intent);
             }
         });
