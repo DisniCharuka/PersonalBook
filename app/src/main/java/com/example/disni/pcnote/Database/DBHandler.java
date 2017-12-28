@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by disni on 12/12/2017.
  */
@@ -42,7 +45,7 @@ public class DBHandler extends SQLiteOpenHelper {
         long newRowId = db.insert(MasterFile.Notes.TABLE_NAME, null, values);
     }
 
-    public boolean readInfo(String noteName){
+    public List readInfo(){
         SQLiteDatabase db = getReadableDatabase();
 
         String[] projection = {
@@ -52,26 +55,30 @@ public class DBHandler extends SQLiteOpenHelper {
         };
 
         String selection = MasterFile.Notes.COLUMN_NAME_NOTENAME + " = ?";
-        String[] selectionArgs = { noteName };
+        //String[] selectionArgs = { "New note" };
 
         String sortOrder = MasterFile.Notes.COLUMN_NAME_NOTENAME + " DESC";
 
         Cursor cursor = db.query(
           MasterFile.Notes.TABLE_NAME,
                 projection,
-                selection,
-                selectionArgs,
+                null,
+                null,
                 null,
                 null,
                 null
         );
 
-        while(cursor.moveToNext()){
-            cursor.close();
-            return true;
+        List noteTitles = new ArrayList<>();
+
+        while(cursor.moveToNext())
+        {
+            String title = cursor.getString(cursor.getColumnIndexOrThrow(MasterFile.Notes.COLUMN_NAME_NOTENAME));
+            noteTitles.add(title);
         }
         cursor.close();
-        return false;
+        return noteTitles;
+
     }
 /*
     public void deleteInfo(String userName){

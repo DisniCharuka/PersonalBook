@@ -42,17 +42,20 @@ public class InsertNewNote extends AppCompatActivity {
             }
         });
 
-        btnDiscard.setOnClickListener(new View.OnClickListener() {
+        /*btnDiscard.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
              boolean x;
              if(!(txtTitle.getText().toString().equals(""))){
 
                  x = mDbHandler.readInfo(txtTitle.getText().toString());
-                 Log.d(" success", "Existin record!");
+                 if(x)
+                     Log.d(" success", "Existin record!");
+                 else
+                     Log.d(" not success", "no record!");
              }
          }
-        });
+        });*/
     }
 
 }

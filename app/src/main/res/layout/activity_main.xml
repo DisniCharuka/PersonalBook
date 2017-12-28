@@ -16,8 +16,9 @@
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="130dp"
             android:text="Login"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="144dp" />
@@ -29,7 +30,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/textView" />
+
+        <Button
+            android:id="@+id/btnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btnLogin"
+            android:layout_below="@+id/btnLogin"
+            android:layout_marginTop="91dp"
+            android:text="View Notes" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
