@@ -1,5 +1,6 @@
 package com.example.disni.pcnote;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.disni.pcnote.Database.DBHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InsertNewNote extends AppCompatActivity {
     protected DBHandler mDbHandler;
@@ -21,6 +25,20 @@ public class InsertNewNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_new_note);
         mDbHandler = new DBHandler(this, DATABASE_NAME, null, DATABASE_VERSION);
+
+        String note = getIntent().getExtras().getString("noteSelected");
+
+        Cursor cursor = mDbHandler.getNoteDetails(note);
+        if(cursor.getCount() == 0){
+            finish();
+        }
+        else{
+            while (cursor.moveToNext()){
+               txtTitle.setText(cursor.getString(0));
+               txtNote.setText(cursor.getString(1));
+            }
+        }
+
         buttonClick();
     }
 

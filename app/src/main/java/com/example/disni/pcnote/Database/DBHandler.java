@@ -80,6 +80,35 @@ public class DBHandler extends SQLiteOpenHelper {
         return noteTitles;
 
     }
+
+    public Cursor getNoteDetails(String noteTitle){
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {
+                MasterFile.Notes._ID,
+                MasterFile.Notes.COLUMN_NAME_NOTENAME,
+                MasterFile.Notes.COLUMN_NAME_NOTECONTENT
+        };
+
+        String selection = MasterFile.Notes.COLUMN_NAME_NOTENAME + "=?";
+        String[] selectionArgs = new String[]{ noteTitle };
+
+        //String sortOrder = MasterFile.Notes.COLUMN_NAME_NOTENAME + " DESC";
+
+        Cursor cursor = db.query(
+                MasterFile.Notes.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+       return cursor;
+
+    }
+
 /*
     public void deleteInfo(String userName){
         SQLiteDatabase db = getReadableDatabase();
