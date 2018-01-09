@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.disni.pcnote.Database.DBHandler;
+import com.example.disni.pcnote.Database.MasterFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,22 +25,35 @@ public class InsertNewNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_new_note);
+        buttonClick(); // this should happen on top because this initialize the txt fields.
         mDbHandler = new DBHandler(this, DATABASE_NAME, null, DATABASE_VERSION);
+        String note = null;
 
-        String note = getIntent().getExtras().getString("noteSelected");
-
-        Cursor cursor = mDbHandler.getNoteDetails(note);
-        if(cursor.getCount() == 0){
-            finish();
+        Bundle info = getIntent().getExtras();
+        if (info != null) {
+            note = info.getString("noteSelected");
         }
-        else{
-            while (cursor.moveToNext()){
-               txtTitle.setText(cursor.getString(0));
-               txtNote.setText(cursor.getString(1));
+
+        Cursor cursor = null;
+
+        if (note != null)
+            cursor = mDbHandler.getNoteDetails(note);
+
+
+        if (cursor != null)
+        {
+            if (cursor.getCount() > 0 )
+            {
+                while (cursor.moveToNext()){
+                    String t1 = cursor.getString( cursor.getColumnIndexOrThrow(MasterFile.Notes.COLUMN_NAME_NOTENAME));
+                    String t2 = cursor.getString( cursor.getColumnIndexOrThrow(MasterFile.Notes.COLUMN_NAME_NOTECONTENT));
+
+                    txtTitle.setText(t1);
+                    txtNote.setText(t2);
+                }
             }
         }
 
-        buttonClick();
     }
 
     private void buttonClick() {

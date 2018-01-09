@@ -55,7 +55,7 @@ public class DBHandler extends SQLiteOpenHelper {
         };
 
         String selection = MasterFile.Notes.COLUMN_NAME_NOTENAME + " = ?";
-        //String[] selectionArgs = { "New note" };
+        String[] selectionArgs = new String[]{ "New note" };
 
         String sortOrder = MasterFile.Notes.COLUMN_NAME_NOTENAME + " DESC";
 
@@ -83,6 +83,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public Cursor getNoteDetails(String noteTitle){
         SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = null;
 
         String[] projection = {
                 MasterFile.Notes._ID,
@@ -95,15 +96,29 @@ public class DBHandler extends SQLiteOpenHelper {
 
         //String sortOrder = MasterFile.Notes.COLUMN_NAME_NOTENAME + " DESC";
 
-        Cursor cursor = db.query(
-                MasterFile.Notes.TABLE_NAME,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
+        if (!noteTitle.equals("")) {
+            cursor = db.query(
+                    MasterFile.Notes.TABLE_NAME,
+                    projection,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+        }
+        else
+        {
+            cursor = db.query(
+                    MasterFile.Notes.TABLE_NAME,
+                    projection,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+        }
 
        return cursor;
 
