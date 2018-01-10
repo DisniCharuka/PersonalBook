@@ -43,15 +43,38 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/txtNote"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/txtTitle"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="17dp"
+            android:text="Note Title:"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView2"
             android:layout_below="@+id/txtTitle"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="17dp"
+            android:textSize="18sp"
+            android:text="Content:"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/mltTxtNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView3"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textMultiLine" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

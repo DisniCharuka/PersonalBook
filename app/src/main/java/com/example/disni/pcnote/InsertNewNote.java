@@ -20,7 +20,8 @@ public class InsertNewNote extends AppCompatActivity {
     public static final String DATABASE_NAME = "Notes.db";
 
     Button btnSave, btnDiscard;
-    TextView txtTitle, txtNote;
+    TextView txtTitle, mltTtxtNote;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class InsertNewNote extends AppCompatActivity {
                     String t2 = cursor.getString( cursor.getColumnIndexOrThrow(MasterFile.Notes.COLUMN_NAME_NOTECONTENT));
 
                     txtTitle.setText(t1);
-                    txtNote.setText(t2);
+                    mltTtxtNote.setText(t2);
                 }
             }
         }
@@ -59,16 +60,16 @@ public class InsertNewNote extends AppCompatActivity {
     private void buttonClick() {
         btnSave = (Button)findViewById(R.id.btnSave);
         btnDiscard = (Button)findViewById(R.id.btnDiscard);
-        txtNote = (TextView)findViewById(R.id.txtNote);
+        mltTtxtNote = (TextView)findViewById(R.id.mltTxtNote);
         txtTitle = (TextView)findViewById(R.id.txtTitle);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(txtTitle.getText().toString().equals("")|| (txtNote.getText().toString().equals("")))){
-                    mDbHandler.addInfo(txtTitle.getText().toString(), txtNote.getText().toString());
+                if(!(txtTitle.getText().toString().equals("")|| (mltTtxtNote.getText().toString().equals("")))){
+                    mDbHandler.addInfo(txtTitle.getText().toString(), mltTtxtNote.getText().toString());
                     txtTitle.setText("");
-                    txtNote.setText("");
+                    mltTtxtNote.setText("");
                     Log.d("insert success", "Successfully inserted!");
                 }
             }
