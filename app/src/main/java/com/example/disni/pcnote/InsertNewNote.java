@@ -19,8 +19,8 @@ public class InsertNewNote extends AppCompatActivity {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Notes.db";
 
-    Button btnSave, btnDiscard;
-    TextView txtTitle, mltTtxtNote;
+    Button btnSave, btnDiscard, btnAttachment;
+    TextView txtTitle, mltTxtNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class InsertNewNote extends AppCompatActivity {
                     String t2 = cursor.getString( cursor.getColumnIndexOrThrow(MasterFile.Notes.COLUMN_NAME_NOTECONTENT));
 
                     txtTitle.setText(t1);
-                    mltTtxtNote.setText(t2);
+                    mltTxtNote.setText(t2);
                 }
             }
         }
@@ -60,16 +60,17 @@ public class InsertNewNote extends AppCompatActivity {
     private void buttonClick() {
         btnSave = (Button)findViewById(R.id.btnSave);
         btnDiscard = (Button)findViewById(R.id.btnDiscard);
-        mltTtxtNote = (TextView)findViewById(R.id.mltTxtNote);
+        btnAttachment = (Button)findViewById(R.id.btnAttachment);
+        mltTxtNote = (TextView)findViewById(R.id.mltTxtNote);
         txtTitle = (TextView)findViewById(R.id.txtTitle);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(txtTitle.getText().toString().equals("")|| (mltTtxtNote.getText().toString().equals("")))){
-                    mDbHandler.addInfo(txtTitle.getText().toString(), mltTtxtNote.getText().toString());
+                if(!(txtTitle.getText().toString().equals("")|| (mltTxtNote.getText().toString().equals("")))){
+                    mDbHandler.addInfo(txtTitle.getText().toString(), mltTxtNote.getText().toString());
                     txtTitle.setText("");
-                    mltTtxtNote.setText("");
+                    mltTxtNote.setText("");
                     Log.d("insert success", "Successfully inserted!");
                 }
             }

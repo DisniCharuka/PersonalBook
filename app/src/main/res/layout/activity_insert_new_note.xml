@@ -37,9 +37,9 @@
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/btnAttachment"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="47dp"
+            android:layout_marginTop="13dp"
             android:ems="10"
             android:inputType="textPersonName" />
 
@@ -47,10 +47,9 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/btnAttachment"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginStart="22dp"
             android:text="Note Title:"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -75,6 +74,15 @@
             android:layout_toEndOf="@+id/textView3"
             android:ems="10"
             android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/btnAttachment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="13dp"
+            android:text="Attach" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
