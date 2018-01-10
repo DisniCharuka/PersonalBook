@@ -81,7 +81,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    public Cursor getNoteDetails(String noteTitle){
+    public Cursor getNoteDetails(String noteTitle){                                 //fetch note details for given title
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = null;
 

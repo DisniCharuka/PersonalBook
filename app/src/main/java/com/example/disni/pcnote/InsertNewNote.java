@@ -37,14 +37,14 @@ public class InsertNewNote extends AppCompatActivity {
         Cursor cursor = null;
 
         if (note != null)
-            cursor = mDbHandler.getNoteDetails(note);
+            cursor = mDbHandler.getNoteDetails(note);           //fetch note details for given title
 
 
         if (cursor != null)
         {
             if (cursor.getCount() > 0 )
             {
-                while (cursor.moveToNext()){
+                while (cursor.moveToNext()){                 //reading the cursor until it has content
                     String t1 = cursor.getString( cursor.getColumnIndexOrThrow(MasterFile.Notes.COLUMN_NAME_NOTENAME));
                     String t2 = cursor.getString( cursor.getColumnIndexOrThrow(MasterFile.Notes.COLUMN_NAME_NOTECONTENT));
 
