@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class DBHandler extends SQLiteOpenHelper {
                         MasterFile.Notes._ID + " INTEGER PRIMARY KEY, " +
                         MasterFile.Notes.COLUMN_NAME_NOTENAME + " TEXT," +
                         MasterFile.Notes.COLUMN_NAME_NOTECONTENT + " TEXT, " +
-                        MasterFile.Notes.COLUMN_NAME_NOTEATTACHMENT + " BLOB)";
+                        MasterFile.Notes.COLUMN_NAME_NOTEATTACHMENT + " BYTE[])";
 
                 db.execSQL(SQL_CREATE_ENTRIES);
     }
@@ -41,6 +42,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(MasterFile.Notes.COLUMN_NAME_NOTENAME, noteName);
         values.put(MasterFile.Notes.COLUMN_NAME_NOTECONTENT, noteContent);
+        //values.put(MasterFile.Notes.COLUMN_NAME_NOTEATTACHMENT, image);
 
         long newRowId = db.insert(MasterFile.Notes.TABLE_NAME, null, values);
     }

@@ -1,5 +1,6 @@
 package com.example.disni.pcnote;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -73,6 +74,14 @@ public class InsertNewNote extends AppCompatActivity {
                     mltTxtNote.setText("");
                     Log.d("insert success", "Successfully inserted!");
                 }
+            }
+        });
+
+        btnAttachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InsertNewNote.this, AddNewAttachment.class );
+                startActivity(intent);
             }
         });
 
