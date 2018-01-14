@@ -22,7 +22,7 @@ public class InsertNewNote extends AppCompatActivity {
 
     Button btnSave, btnDiscard, btnAttachment;
     TextView txtTitle, mltTxtNote;
-
+    byte[] imageArray = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +30,13 @@ public class InsertNewNote extends AppCompatActivity {
         buttonClick(); // this should happen on top because this initialize the txt fields.
         mDbHandler = new DBHandler(this, DATABASE_NAME, null, DATABASE_VERSION);
         String note = null;
+        String attach = null;
+
 
         Bundle info = getIntent().getExtras();
         if (info != null) {
             note = info.getString("noteSelected");
+            imageArray = info.getByteArray("attachmentAttached");
         }
 
         Cursor cursor = null;
@@ -56,6 +59,7 @@ public class InsertNewNote extends AppCompatActivity {
             }
         }
 
+
     }
 
     private void buttonClick() {
@@ -69,7 +73,7 @@ public class InsertNewNote extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!(txtTitle.getText().toString().equals("")|| (mltTxtNote.getText().toString().equals("")))){
-                    mDbHandler.addInfo(txtTitle.getText().toString(), mltTxtNote.getText().toString());
+                    mDbHandler.addInfo(txtTitle.getText().toString(), mltTxtNote.getText().toString(), imageArray);
                     txtTitle.setText("");
                     mltTxtNote.setText("");
                     Log.d("insert success", "Successfully inserted!");

@@ -36,13 +36,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    public void addInfo(String noteName, String noteContent){
+    public void addInfo(String noteName, String noteContent, byte[] image){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(MasterFile.Notes.COLUMN_NAME_NOTENAME, noteName);
         values.put(MasterFile.Notes.COLUMN_NAME_NOTECONTENT, noteContent);
-        //values.put(MasterFile.Notes.COLUMN_NAME_NOTEATTACHMENT, image);
+        values.put(MasterFile.Notes.COLUMN_NAME_NOTEATTACHMENT, image);
 
         long newRowId = db.insert(MasterFile.Notes.TABLE_NAME, null, values);
     }
